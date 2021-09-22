@@ -9,8 +9,8 @@ build:
   local:
     push: false
   artifacts:
-    - image: brhamill/auth
-      context: auth
+    - image: brhamill/authold
+      context: authold
       docker:
         dockerfile: Dockerfile
       sync:

@@ -21,7 +21,7 @@ spec:
             path: '/api/users/?(.*)'
             backend:
               service:
-                name: auth-srv
+                name: authold-srv
                 port:
                   number: 3000
           - pathType: Prefix

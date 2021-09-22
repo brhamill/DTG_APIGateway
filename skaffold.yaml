@@ -25,14 +25,14 @@ build:
     #     manual:
     #       - src: '**/*.js'
     #         dest: .
-    # - image: brhamill/tickets
-    #   context: tickets
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: 'src/**/*.ts'
-    #         dest: .
+    - image: brhamill/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
     # - image: brhamill/orders
     #   context: orders
     #   docker:

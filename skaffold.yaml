@@ -9,48 +9,16 @@ build:
   local:
     push: false
   artifacts:
-    - image: brhamill/authold
-      context: authold
+    - image: brhamill/apigateway
+      context: api-gateway
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: brhamill/client
-      context: client
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: '**/*.js'
-            dest: .
-    - image: brhamill/tickets
-      context: tickets
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
-    - image: brhamill/orders
-      context: orders
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
-    - image: brhamill/expiration
-      context: expiration
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
-    - image: brhamill/payments
-      context: payments
+    - image: brhamill/auth
+      context: auth
       docker:
         dockerfile: Dockerfile
       sync:

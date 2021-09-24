@@ -11,37 +11,16 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: '/api/payments/?(.*)'
+            path: '/api/gateway/?(.*)'
             backend:
               service:
-                name: payments-srv
+                name: apigateway-srv
                 port:
                   number: 3000
           - pathType: Prefix
-            path: '/api/users/?(.*)'
+            path: '/api/auth/?(.*)'
             backend:
               service:
-                name: authold-srv
-                port:
-                  number: 3000
-          - pathType: Prefix
-            path: '/api/tickets/?(.*)'
-            backend:
-              service:
-                name: tickets-srv
-                port:
-                  number: 3000
-          - pathType: Prefix
-            path: '/api/orders/?(.*)'
-            backend:
-              service:
-                name: orders-srv
-                port:
-                  number: 3000
-          - pathType: Prefix
-            path: '/?(.*)'
-            backend:
-              service:
-                name: client-srv
+                name: auth-srv
                 port:
                   number: 3000

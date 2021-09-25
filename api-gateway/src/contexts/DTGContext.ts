@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 
 import { AuthAPI } from '../datasources'
 
-export interface EvalContext {
+export interface DTGContext {
   req: Request
   res: Response
   payload?: {

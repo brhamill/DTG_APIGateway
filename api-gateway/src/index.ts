@@ -3,6 +3,8 @@ import { ApolloServer } from 'apollo-server-express'
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core'
 import { buildSchema } from 'type-graphql'
 import path from 'path'
+import { BaseRedisCache } from 'apollo-server-cache-redis'
+import Redis from 'ioredis'
 
 import { app } from './app'
 import { RootResolver, AuthResolver } from './resolvers'
@@ -14,6 +16,11 @@ const start = async () => {
       resolvers: [RootResolver, AuthResolver],
       dateScalarMode: 'isoDate',
       emitSchemaFile: path.join(__dirname, '/documents/graphql.gql'),
+    }),
+    cache: new BaseRedisCache({
+      client: new Redis({
+        host: process.env.REDIS_URI,
+      }),
     }),
     dataSources: () => {
       return {

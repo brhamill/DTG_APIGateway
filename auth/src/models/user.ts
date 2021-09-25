@@ -2,11 +2,11 @@ import mongoose from 'mongoose'
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current'
 import { v4 as uuid } from 'uuid'
 
-interface UserAttrs {
+interface IUserAttrs {
   email: string
 }
 
-interface UserDoc extends mongoose.Document {
+interface IUserDoc extends mongoose.Document {
   _id: string
   organizationId?: string
   firstName?: string
@@ -22,11 +22,11 @@ interface UserDoc extends mongoose.Document {
   updatedById?: string
 }
 
-interface UserModel extends mongoose.Model<UserDoc> {
-  build(attrs: UserAttrs): UserDoc
+interface IUserModel extends mongoose.Model<IUserDoc> {
+  build(attrs: IUserAttrs): IUserDoc
 }
 
-const userSchema = new mongoose.Schema<UserDoc>(
+const userSchema = new mongoose.Schema<IUserDoc>(
   {
     _id: {
       type: String,
@@ -78,10 +78,10 @@ const userSchema = new mongoose.Schema<UserDoc>(
 userSchema.set('versionKey', 'version')
 userSchema.plugin(updateIfCurrentPlugin)
 
-userSchema.statics.build = (attrs: UserAttrs) => {
+userSchema.statics.build = (attrs: IUserAttrs) => {
   return new User(attrs)
 }
 
-const User = mongoose.model<UserDoc, UserModel>('User', userSchema)
+const User = mongoose.model<IUserDoc, IUserModel>('User', userSchema)
 
 export { User }

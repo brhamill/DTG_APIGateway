@@ -1,11 +1,8 @@
 import { MiddlewareFn } from 'type-graphql'
 
-import { EvalContext } from '../contexts'
+import { DTGContext } from '../contexts'
 
-export const getAdmin: MiddlewareFn<EvalContext> = async (
-  { context },
-  next
-) => {
+export const getAdmin: MiddlewareFn<DTGContext> = async ({ context }, next) => {
   if (!context.payload) {
     context.payload = {
       adminId: '123',

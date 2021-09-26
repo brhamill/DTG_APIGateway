@@ -4,10 +4,11 @@ metadata:
   name: ingress-service
   annotations:
     nginx.ingress.kubernetes.io/use-regex: 'true'
+    cert-manager.io/cluster-issuer: selfsigned-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: ticketing.dev
+    - host: dtg.dev
       http:
         paths:
           - pathType: Prefix
@@ -17,3 +18,7 @@ spec:
                 name: apigateway-srv
                 port:
                   number: 3000
+  tls:
+    - hosts:
+        - dtg.dev
+      secretName: dtg-cert-tls
